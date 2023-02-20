@@ -1,4 +1,5 @@
 
+
 import SwiftUI
 
 struct ContentView: View {
@@ -6,6 +7,8 @@ struct ContentView: View {
     // State values/variables
     @State var playerScore = 0
     @State var cpuScore = 0
+    @State var playerCard = "card2"
+    @State var cpuCard = "card2"
     
     var body: some View {
         ZStack {
@@ -20,16 +23,34 @@ struct ContentView: View {
                 
                 HStack {
                     Spacer()
-                    Image("card5")
+                    // Displays a card image based on the current value of the playerCard state variable
+                    Image(playerCard)
                     Spacer()
-                    Image("card5")
+                    // Displays a card image based on the current value of the cpuCard state variable
+                    Image(cpuCard)
                     Spacer()
                 }
                 
                 Spacer()
                 
                 Button {
-                    print("Button clicked!")
+                    // The following code will run each time the button is clicked
+                    
+                    // The random method generates a random Int from one specified Int to a second specified Int (Ex: Int.random(in: Int...14)
+                    let playerRandom = Int.random(in: 2...14)
+                    let cpuRandom = Int.random(in: 2...14)
+                    
+                    // Updates the cards displayed on the app
+                    playerCard = "card" + String(playerRandom)
+                    cpuCard = "card" + String(cpuRandom)
+
+                    // Update the score
+                    if (playerRandom > cpuRandom){
+                        playerScore = playerScore + 1
+                    } else if (playerRandom < cpuRandom) {
+                        cpuScore = cpuScore + 1
+                    }
+
                 } label: {
                     Image("dealbutton")
                 }
@@ -39,6 +60,7 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     VStack {
+                        // Styling can added to elements/views by using the right panel
                         Text("Player")
                             .font(.headline)
                             .foregroundColor(Color.white)
