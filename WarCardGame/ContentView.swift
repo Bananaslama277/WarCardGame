@@ -4,7 +4,6 @@ import SwiftUI
 
 struct ContentView: View {
 
-    // State values/variables
     @State var playerScore = 0
     @State var cpuScore = 0
     @State var playerCard = "card2"
@@ -23,10 +22,8 @@ struct ContentView: View {
                 
                 HStack {
                     Spacer()
-                    // Displays a card image based on the current value of the playerCard state variable
                     Image(playerCard)
                     Spacer()
-                    // Displays a card image based on the current value of the cpuCard state variable
                     Image(cpuCard)
                     Spacer()
                 }
@@ -34,9 +31,7 @@ struct ContentView: View {
                 Spacer()
                 
                 Button {
-                    // The following code will run each time the button is clicked
                     
-                    // The random method generates a random Int from one specified Int to a second specified Int (Ex: Int.random(in: Int...14)
                     let playerRandom = Int.random(in: 2...14)
                     let cpuRandom = Int.random(in: 2...14)
                     
@@ -60,7 +55,6 @@ struct ContentView: View {
                 HStack {
                     Spacer()
                     VStack {
-                        // Styling can added to elements/views by using the right panel
                         Text("Player")
                             .font(.headline)
                             .foregroundColor(Color.white)
